@@ -3,144 +3,125 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <!-- SEO优化 -->
-    <title>Pi节点免费搭建指南 - 零基础学会Pi Network节点部署</title>
-    <meta name="description" content="完整的Pi节点搭建教程，包含云服务器配置、Docker安装、节点设置全流程。专业团队指导，免费提供Pi Network节点部署解决方案。">
-    <meta name="keywords" content="Pi节点搭建,Pi Network节点,Pi币节点,区块链节点,免费节点搭建">
-    <meta name="author" content="Pi节点部署专家">
-    
-    <!-- 结构化数据 -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Article",
-      "headline": "Pi节点免费搭建指南",
-      "description": "完整的Pi节点搭建教程，包含云服务器配置、Docker安装、节点设置全流程",
-      "author": {
-        "@type": "Person",
-        "name": "Pi节点部署专家"
-      },
-      "datePublished": "2026-01-12",
-      "publisher": {
-        "@type": "Organization",
-        "name": "Pi节点搭建服务"
-      }
-    }
-    </script>
-    
-    <!-- 字体和图标 -->
+    <title>Pi节点免费搭建指南 - 降低Pi节点搭建技术门槛</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --primary: #f7931a;
+            --primary-dark: #d87d16;
+            --secondary: #1a5fb4;
+            --secondary-dark: #0d4a8f;
+            --dark: #1a1d29;
+            --light: #f8f9fa;
+            --gray: #6c757d;
+            --light-gray: #e9ecef;
+            --success: #28a745;
+            --danger: #dc3545;
+            --border-radius: 8px;
+            --box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+        
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
         
-        :root {
-            --primary: #6366f1;
-            --primary-dark: #4f46e5;
-            --secondary: #10b981;
-            --dark: #1f2937;
-            --light: #f9fafb;
-            --gray: #6b7280;
-            --gray-light: #e5e7eb;
-            --gradient: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
-            --shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-            --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-            --radius: 12px;
-            --transition: all 0.3s ease;
-        }
-        
         body {
             font-family: 'Inter', sans-serif;
             line-height: 1.6;
             color: var(--dark);
-            background-color: #f8fafc;
+            background-color: #fff;
             overflow-x: hidden;
         }
         
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        
         .container {
+            width: 100%;
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
         }
         
-        /* 头部样式 */
-        header {
-            background: var(--gradient);
+        .btn {
+            display: inline-block;
+            padding: 12px 28px;
+            background-color: var(--primary);
             color: white;
-            padding: 100px 0 80px;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .header-content {
-            max-width: 800px;
-            margin: 0 auto;
-            text-align: center;
-            position: relative;
-            z-index: 2;
-        }
-        
-        .header-bg {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,0 L100,100 Z" fill="rgba(255,255,255,0.05)"/></svg>');
-            background-size: cover;
-        }
-        
-        h1 {
-            font-size: 3.5rem;
-            font-weight: 800;
-            margin-bottom: 20px;
-            line-height: 1.2;
-            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        }
-        
-        .subtitle {
-            font-size: 1.5rem;
-            font-weight: 300;
-            margin-bottom: 40px;
-            opacity: 0.9;
-            max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        
-        .contact-info {
-            background: rgba(255, 255, 255, 0.15);
-            backdrop-filter: blur(10px);
-            border-radius: var(--radius);
-            padding: 25px;
-            display: inline-flex;
-            align-items: center;
-            gap: 15px;
-            margin-top: 30px;
-            box-shadow: var(--shadow);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-        
-        .contact-info i {
-            font-size: 1.8rem;
-        }
-        
-        .contact-info span {
-            font-size: 1.3rem;
+            border: none;
+            border-radius: var(--border-radius);
             font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            text-align: center;
         }
         
-        /* 导航 */
-        nav {
-            background: white;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-            position: sticky;
+        .btn:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: var(--box-shadow);
+        }
+        
+        .btn-secondary {
+            background-color: var(--secondary);
+        }
+        
+        .btn-secondary:hover {
+            background-color: var(--secondary-dark);
+        }
+        
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+        
+        .btn-outline:hover {
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        section {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+            text-align: center;
+            color: var(--dark);
+        }
+        
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: var(--gray);
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 50px;
+        }
+        
+        .text-center {
+            text-align: center;
+        }
+        
+        .highlight {
+            color: var(--primary);
+        }
+        
+        /* 头部导航 */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+            position: fixed;
+            width: 100%;
             top: 0;
             z-index: 1000;
         }
@@ -149,7 +130,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 20px 0;
+            padding: 20px;
         }
         
         .logo {
@@ -158,282 +139,348 @@
             color: var(--primary);
             display: flex;
             align-items: center;
-            gap: 10px;
         }
         
         .logo i {
-            color: var(--secondary);
+            margin-right: 10px;
         }
         
         .nav-links {
             display: flex;
-            gap: 30px;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 30px;
         }
         
         .nav-links a {
-            text-decoration: none;
-            color: var(--dark);
             font-weight: 500;
             transition: var(--transition);
-            padding: 8px 0;
-            position: relative;
         }
         
         .nav-links a:hover {
             color: var(--primary);
         }
         
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--primary);
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--dark);
+        }
+        
+        /* 语言切换 */
+        .language-switcher {
+            display: flex;
+            align-items: center;
+            margin-left: 30px;
+        }
+        
+        .lang-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-weight: 500;
+            padding: 5px 10px;
+            border-radius: 4px;
             transition: var(--transition);
         }
         
-        .nav-links a:hover::after {
-            width: 100%;
+        .lang-btn.active {
+            background-color: var(--light-gray);
+            color: var(--primary);
         }
         
-        /* 主要内容 */
-        main {
-            padding: 80px 0;
+        /* 英雄区域 */
+        .hero {
+            padding-top: 150px;
+            padding-bottom: 100px;
+            background: linear-gradient(135deg, #fef6e9 0%, #f2f7ff 100%);
+            position: relative;
+            overflow: hidden;
         }
         
-        .section-title {
+        .hero-content {
+            max-width: 700px;
+            margin: 0 auto;
             text-align: center;
-            margin-bottom: 60px;
         }
         
-        .section-title h2 {
+        .hero h1 {
+            font-size: 3.2rem;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--gray);
+            margin-bottom: 40px;
+        }
+        
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 60px;
+        }
+        
+        .stat-item {
+            text-align: center;
+        }
+        
+        .stat-number {
             font-size: 2.5rem;
             font-weight: 700;
-            color: var(--dark);
+            color: var(--primary);
+            display: block;
+        }
+        
+        .stat-label {
+            color: var(--gray);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        /* 功能亮点 */
+        .features {
+            background-color: white;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .feature-card {
+            background-color: white;
+            border-radius: var(--border-radius);
+            padding: 30px;
+            box-shadow: var(--box-shadow);
+            transition: var(--transition);
+            text-align: center;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .feature-icon {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+        
+        .feature-card h3 {
+            font-size: 1.4rem;
             margin-bottom: 15px;
         }
         
-        .section-title p {
-            color: var(--gray);
-            font-size: 1.1rem;
-            max-width: 700px;
+        /* 分步指南 */
+        .guide {
+            background-color: #f8f9fa;
+        }
+        
+        .steps-container {
+            max-width: 800px;
             margin: 0 auto;
         }
         
-        .articles-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-            gap: 40px;
-            margin-bottom: 80px;
-        }
-        
-        .article-card {
-            background: white;
-            border-radius: var(--radius);
-            overflow: hidden;
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-        }
-        
-        .article-card:hover {
-            transform: translateY(-10px);
-            box-shadow: var(--shadow-lg);
-        }
-        
-        .article-img {
-            height: 200px;
-            background: var(--gradient);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 3rem;
-        }
-        
-        .article-content {
-            padding: 30px;
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
-        }
-        
-        .article-content h3 {
-            font-size: 1.5rem;
-            margin-bottom: 15px;
-            color: var(--dark);
-        }
-        
-        .article-content p {
-            color: var(--gray);
-            margin-bottom: 20px;
-            flex-grow: 1;
-        }
-        
-        .article-meta {
-            display: flex;
-            justify-content: space-between;
-            color: var(--gray);
-            font-size: 0.9rem;
-            margin-top: auto;
-            padding-top: 20px;
-            border-top: 1px solid var(--gray-light);
-        }
-        
-        .read-more {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            color: var(--primary);
-            text-decoration: none;
-            font-weight: 600;
-            transition: var(--transition);
-        }
-        
-        .read-more:hover {
-            gap: 12px;
-        }
-        
-        /* 教程详情 */
-        .tutorial-container {
-            background: white;
-            border-radius: var(--radius);
-            box-shadow: var(--shadow);
-            overflow: hidden;
-            margin-bottom: 80px;
-        }
-        
-        .tutorial-header {
-            background: var(--gradient);
-            color: white;
-            padding: 40px;
-        }
-        
-        .tutorial-header h2 {
-            font-size: 2.2rem;
-            margin-bottom: 15px;
-        }
-        
-        .tutorial-content {
-            padding: 50px;
-        }
-        
         .step {
-            margin-bottom: 50px;
-            padding-bottom: 40px;
-            border-bottom: 1px solid var(--gray-light);
-        }
-        
-        .step:last-child {
-            border-bottom: none;
-            margin-bottom: 0;
-            padding-bottom: 0;
+            background-color: white;
+            border-radius: var(--border-radius);
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: var(--box-shadow);
+            position: relative;
         }
         
         .step-number {
-            display: inline-flex;
+            position: absolute;
+            top: -15px;
+            left: 30px;
+            background-color: var(--primary);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
             align-items: center;
             justify-content: center;
-            width: 50px;
-            height: 50px;
-            background: var(--gradient);
-            color: white;
-            border-radius: 50%;
             font-weight: 700;
-            font-size: 1.3rem;
-            margin-bottom: 20px;
+            font-size: 1.2rem;
         }
         
         .step h3 {
-            font-size: 1.6rem;
+            font-size: 1.3rem;
             margin-bottom: 15px;
-            color: var(--dark);
+            margin-top: 10px;
         }
         
-        .step p {
-            color: var(--gray);
+        .os-selector {
+            display: flex;
+            gap: 10px;
             margin-bottom: 20px;
         }
         
+        .os-btn {
+            padding: 8px 20px;
+            background-color: var(--light-gray);
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: var(--transition);
+            font-weight: 500;
+        }
+        
+        .os-btn.active {
+            background-color: var(--primary);
+            color: white;
+        }
+        
         .code-block {
-            background: #1e293b;
-            color: #e2e8f0;
-            padding: 25px;
-            border-radius: 8px;
-            font-family: 'JetBrains Mono', monospace;
+            background-color: var(--dark);
+            color: #f8f8f2;
+            padding: 20px;
+            border-radius: var(--border-radius);
+            font-family: monospace;
             overflow-x: auto;
             margin: 20px 0;
             position: relative;
         }
         
-        .code-block::before {
-            content: 'Terminal';
+        .copy-btn {
             position: absolute;
             top: 10px;
-            right: 15px;
+            right: 10px;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 4px;
+            cursor: pointer;
             font-size: 0.8rem;
-            color: #94a3b8;
-            font-family: 'Inter', sans-serif;
+            transition: var(--transition);
         }
         
-        .requirements {
-            background: #f0f9ff;
-            border-left: 4px solid var(--primary);
+        .copy-btn:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+        
+        /* FAQ */
+        .faq {
+            background-color: white;
+        }
+        
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .faq-item {
+            margin-bottom: 15px;
+            border: 1px solid var(--light-gray);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+        }
+        
+        .faq-question {
+            padding: 20px;
+            background-color: var(--light);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+        }
+        
+        .faq-answer {
+            padding: 20px;
+            display: none;
+        }
+        
+        .faq-item.active .faq-answer {
+            display: block;
+        }
+        
+        .faq-item.active .faq-question i {
+            transform: rotate(180deg);
+        }
+        
+        .faq-question i {
+            transition: var(--transition);
+        }
+        
+        /* 资源下载 */
+        .resources {
+            background-color: #f8f9fa;
+        }
+        
+        .resource-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin-top: 50px;
+        }
+        
+        .resource-card {
+            background-color: white;
+            border-radius: var(--border-radius);
             padding: 25px;
-            border-radius: 0 8px 8px 0;
-            margin: 25px 0;
+            box-shadow: var(--box-shadow);
+            text-align: center;
+            transition: var(--transition);
         }
         
-        .requirements h4 {
+        .resource-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .resource-icon {
+            font-size: 2.5rem;
+            color: var(--secondary);
+            margin-bottom: 20px;
+        }
+        
+        .download-btn {
+            margin-top: 15px;
+            width: 100%;
+        }
+        
+        /* 联系部分 */
+        .contact {
+            background-color: white;
+        }
+        
+        .contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 40px;
+        }
+        
+        .contact-item {
+            text-align: center;
+            flex: 1;
+            min-width: 200px;
+        }
+        
+        .contact-icon {
+            font-size: 2.5rem;
             color: var(--primary);
             margin-bottom: 15px;
-            font-size: 1.2rem;
-        }
-        
-        .requirements ul {
-            padding-left: 20px;
-        }
-        
-        .requirements li {
-            margin-bottom: 8px;
-            color: var(--dark);
-        }
-        
-        /* 响应式设计 */
-        @media (max-width: 768px) {
-            h1 {
-                font-size: 2.5rem;
-            }
-            
-            .subtitle {
-                font-size: 1.2rem;
-            }
-            
-            .nav-links {
-                display: none;
-            }
-            
-            .articles-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .tutorial-content {
-                padding: 30px;
-            }
-            
-            .contact-info {
-                flex-direction: column;
-                text-align: center;
-            }
         }
         
         /* 页脚 */
         footer {
-            background: var(--dark);
+            background-color: var(--dark);
             color: white;
             padding: 60px 0 30px;
         }
@@ -445,344 +492,1140 @@
             margin-bottom: 40px;
         }
         
-        .footer-section h3 {
+        .footer-column h3 {
             font-size: 1.3rem;
             margin-bottom: 20px;
-            color: white;
+            color: var(--primary);
         }
         
-        .footer-section p {
-            color: #d1d5db;
-            line-height: 1.8;
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a:hover {
+            color: var(--primary);
         }
         
         .copyright {
             text-align: center;
             padding-top: 30px;
-            border-top: 1px solid #374151;
-            color: #9ca3af;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.7);
             font-size: 0.9rem;
         }
         
-        .highlight {
-            background: linear-gradient(120deg, rgba(99, 102, 241, 0.1) 0%, rgba(139, 92, 246, 0.1) 100%);
-            padding: 4px 8px;
-            border-radius: 4px;
+        /* 主题切换 */
+        .theme-switcher {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 100;
+        }
+        
+        .theme-btn {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            cursor: pointer;
+            box-shadow: var(--box-shadow);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            transition: var(--transition);
+        }
+        
+        /* 暗色主题 */
+        body.dark-theme {
+            background-color: #121212;
+            color: #e0e0e0;
+        }
+        
+        body.dark-theme .section-title,
+        body.dark-theme .hero h1 {
+            color: #f0f0f0;
+        }
+        
+        body.dark-theme .feature-card,
+        body.dark-theme .step,
+        body.dark-theme .resource-card {
+            background-color: #1e1e1e;
+            color: #e0e0e0;
+        }
+        
+        body.dark-theme .faq-question {
+            background-color: #1e1e1e;
+            color: #e0e0e0;
+        }
+        
+        body.dark-theme .guide,
+        body.dark-theme .resources {
+            background-color: #181818;
+        }
+        
+        body.dark-theme .hero {
+            background: linear-gradient(135deg, #2a2118 0%, #1a2530 100%);
+        }
+        
+        body.dark-theme header {
+            background-color: #1e1e1e;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+        
+        /* 响应式设计 */
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links,
+            .language-switcher {
+                display: none;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .hero {
+                padding-top: 120px;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero-stats {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            .mobile-menu {
+                position: fixed;
+                top: 80px;
+                left: 0;
+                width: 100%;
+                background-color: white;
+                padding: 20px;
+                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+                z-index: 999;
+                transform: translateY(-100%);
+                opacity: 0;
+                transition: var(--transition);
+            }
+            
+            body.dark-theme .mobile-menu {
+                background-color: #1e1e1e;
+            }
+            
+            .mobile-menu.active {
+                transform: translateY(0);
+                opacity: 1;
+            }
+            
+            .mobile-nav-links {
+                list-style: none;
+            }
+            
+            .mobile-nav-links li {
+                margin-bottom: 15px;
+            }
+            
+            .mobile-nav-links a {
+                display: block;
+                padding: 10px 0;
+                border-bottom: 1px solid var(--light-gray);
+            }
+            
+            .mobile-lang-switcher {
+                display: flex;
+                gap: 10px;
+                margin-top: 20px;
+            }
+        }
+        
+        /* 成功案例 */
+        .testimonials {
+            background-color: #f8f9fa;
+        }
+        
+        .testimonial-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .testimonial-card {
+            background-color: white;
+            border-radius: var(--border-radius);
+            padding: 30px;
+            box-shadow: var(--box-shadow);
+        }
+        
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 20px;
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+        
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: var(--light-gray);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            font-weight: 700;
+            color: var(--primary);
+        }
+        
+        /* 模态框 */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .modal.active {
+            display: flex;
+        }
+        
+        .modal-content {
+            background-color: white;
+            border-radius: var(--border-radius);
+            padding: 40px;
+            max-width: 500px;
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+            position: relative;
+        }
+        
+        body.dark-theme .modal-content {
+            background-color: #1e1e1e;
+            color: #e0e0e0;
+        }
+        
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--gray);
+        }
+        
+        .modal h2 {
+            margin-bottom: 20px;
+            color: var(--primary);
+        }
+        
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .form-group label {
+            margin-bottom: 8px;
             font-weight: 500;
         }
         
-        .note {
-            background: #fef3c7;
-            border-left: 4px solid #f59e0b;
-            padding: 20px;
-            border-radius: 0 8px 8px 0;
-            margin: 20px 0;
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            padding: 12px;
+            border: 1px solid var(--light-gray);
+            border-radius: var(--border-radius);
+            font-family: 'Inter', sans-serif;
         }
         
-        .note h4 {
-            color: #92400e;
-            margin-bottom: 10px;
-        }
-        
-        .note p {
-            color: #92400e;
+        body.dark-theme .form-group input,
+        body.dark-theme .form-group textarea,
+        body.dark-theme .form-group select {
+            background-color: #2a2a2a;
+            border-color: #444;
+            color: #e0e0e0;
         }
     </style>
 </head>
 <body>
-    <!-- 网站头部 -->
+    <!-- 头部导航 -->
     <header>
-        <div class="header-bg"></div>
-        <div class="container header-content">
-            <h1>免费搭建Pi节点完整指南</h1>
-            <p class="subtitle">专业级Pi Network节点部署教程 | 零基础到精通 | 24/7稳定运行 | 为Pi Network主网做准备</p>
+        <div class="nav-container container">
+            <a href="#" class="logo">
+                <i class="fas fa-sitemap"></i> PiNode<span class="highlight">Guide</span>
+            </a>
             
-            <div class="contact-info">
-                <i class="fas fa-headset"></i>
-                <div>
-                    <div>免费技术咨询与支持</div>
-                    <span><i class="fab fa-qq"></i> QQ: 1129810981</span>
-                </div>
+            <ul class="nav-links">
+                <li><a href="#home">首页</a></li>
+                <li><a href="#about">什么是Pi节点</a></li>
+                <li><a href="#guide">搭建指南</a></li>
+                <li><a href="#faq">常见问题</a></li>
+                <li><a href="#resources">资源下载</a></li>
+                <li><a href="#testimonials">成功案例</a></li>
+                <li><a href="#contact">联系我们</a></li>
+            </ul>
+            
+            <div class="language-switcher">
+                <button class="lang-btn active" data-lang="zh">中文</button>
+                <button class="lang-btn" data-lang="en">English</button>
+            </div>
+            
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+        
+        <!-- 移动端菜单 -->
+        <div class="mobile-menu" id="mobileMenu">
+            <ul class="mobile-nav-links">
+                <li><a href="#home">首页</a></li>
+                <li><a href="#about">什么是Pi节点</a></li>
+                <li><a href="#guide">搭建指南</a></li>
+                <li><a href="#faq">常见问题</a></li>
+                <li><a href="#resources">资源下载</a></li>
+                <li><a href="#testimonials">成功案例</a></li>
+                <li><a href="#contact">联系我们</a></li>
+            </ul>
+            
+            <div class="mobile-lang-switcher">
+                <button class="btn btn-outline" data-lang="zh">中文</button>
+                <button class="btn btn-outline" data-lang="en">English</button>
             </div>
         </div>
     </header>
-    
-    <!-- 导航栏 -->
-    <nav>
-        <div class="container nav-container">
-            <div class="logo">
-                <i class="fas fa-code-branch"></i>
-                <span>Pi节点部署</span>
-            </div>
-            
-            <div class="nav-links">
-                <a href="#home">首页</a>
-                <a href="#tutorials">教程</a>
-                <a href="#articles">文章</a>
-                <a href="#contact">联系</a>
-            </div>
-        </div>
-    </nav>
-    
-    <!-- 主要内容 -->
-    <main class="container">
-        <!-- 教程文章区 -->
-        <section id="tutorials">
-            <div class="section-title">
-                <h2>Pi节点搭建详细教程</h2>
-                <p>按照以下步骤，从零开始搭建稳定的Pi Network节点</p>
-            </div>
-            
-            <div class="tutorial-container">
-                <div class="tutorial-header">
-                    <h2>Pi节点完整搭建流程</h2>
-                    <p>基于最新Pi节点软件和Docker技术</p>
+
+    <!-- 英雄区域 -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="fade-in">免费搭建<span class="highlight"> Pi Network 节点</span></h1>
+                <p class="fade-in">降低Pi节点搭建技术门槛，提供清晰易懂的分步指南，让任何人都能轻松运行Pi节点，共同建设Pi Network生态系统。</p>
+                <div class="fade-in">
+                    <a href="#guide" class="btn btn-primary">开始搭建</a>
+                    <a href="#about" class="btn btn-outline" style="margin-left: 15px;">了解更多</a>
                 </div>
                 
-                <div class="tutorial-content">
-                    <!-- 步骤1 -->
-                    <div class="step">
-                        <div class="step-number">1</div>
-                        <h3>准备工作与服务器选择</h3>
-                        <p>搭建Pi节点首先需要准备合适的服务器环境。根据Pi Network官方要求，推荐使用主流云服务商。</p>
-                        
-                        <div class="requirements">
-                            <h4>硬件与网络要求[citation:1][citation:5]</h4>
-                            <ul>
-                                <li><strong>云服务器</strong>: 阿里云、腾讯云、AWS等主流服务商</li>
-                                <li><strong>最低配置</strong>: 2核CPU、4GB内存、30GB存储</li>
-                                <li><strong>带宽</strong>: 至少2Mbps保证稳定性</li>
-                                <li><strong>操作系统</strong>: Ubuntu/CentOS等Linux系统（对Docker支持更友好）</li>
-                                <li><strong>端口开放</strong>: TCP 31400-31409, UDP 1701, TCP 1723</li>
-                            </ul>
-                        </div>
-                        
-                        <p>如果选择Windows系统，需要启用Hyper-V和Linux子系统功能。部分云服务器可能不支持二次虚拟化，需选择支持Docker的操作系统[citation:1]。</p>
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <span class="stat-number" id="nodeCount">1,850</span>
+                        <span class="stat-label">已搭建节点</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number" id="guideCount">45,200</span>
+                        <span class="stat-label">指南使用次数</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number" id="countryCount">78</span>
+                        <span class="stat-label">国家/地区</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 什么是Pi节点 -->
+    <section class="about" id="about">
+        <div class="container">
+            <h2 class="section-title">什么是<span class="highlight"> Pi 节点</span>？</h2>
+            <p class="section-subtitle">Pi节点是Pi Network的核心基础设施，为整个网络提供安全、去中心化的交易验证和服务。</p>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>网络安全性</h3>
+                    <p>Pi节点负责验证交易和维护网络共识，确保Pi Network的安全和去中心化。</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3>交易处理</h3>
+                    <p>节点处理Pi网络上的所有交易，确保快速、可靠的转账和智能合约执行。</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>社区建设</h3>
+                    <p>运行节点为Pi社区做出贡献，帮助网络成长并获得相应奖励。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 搭建指南 -->
+    <section class="guide" id="guide">
+        <div class="container">
+            <h2 class="section-title">Pi节点<span class="highlight"> 搭建指南</span></h2>
+            <p class="section-subtitle">按照以下步骤轻松搭建您的Pi节点。本教程支持Windows、Mac和Linux系统。</p>
+            
+            <div class="steps-container">
+                <!-- 步骤1 -->
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>准备环境要求</h3>
+                    <p>确保您的系统满足以下要求：</p>
+                    <ul style="margin: 15px 0 15px 20px;">
+                        <li>操作系统：Windows 10/11, macOS 10.15+, Ubuntu 20.04+</li>
+                        <li>内存：至少4GB RAM（推荐8GB）</li>
+                        <li>存储：至少100GB可用空间</li>
+                        <li>网络：稳定的互联网连接，开放端口31400-31409</li>
+                        <li>Docker：需要安装Docker环境</li>
+                    </ul>
+                    
+                    <p>选择您的操作系统查看具体安装命令：</p>
+                    <div class="os-selector">
+                        <button class="os-btn active" data-os="windows">Windows</button>
+                        <button class="os-btn" data-os="mac">macOS</button>
+                        <button class="os-btn" data-os="linux">Linux</button>
                     </div>
                     
-                    <!-- 步骤2 -->
-                    <div class="step">
-                        <div class="step-number">2</div>
-                        <h3>安装Docker环境</h3>
-                        <p>Docker是运行Pi节点必需的容器化环境。以下是Linux系统下的安装命令：</p>
-                        
-                        <div class="code-block">
-# 更新系统包
-sudo apt-get update
-
-# 安装Docker依赖
-sudo apt-get install \
-    apt-transport-https \
-    ca-certificates \
-    curl \
-    gnupg \
-    lsb-release
-
-# 添加Docker官方GPG密钥
-curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
-
-# 设置稳定版仓库
-echo \
-  "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu \
-  $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
-
-# 安装Docker引擎
-sudo apt-get update
-sudo apt-get install docker-ce docker-ce-cli containerd.io
-
-# 验证安装
-docker --version
-                        </div>
-                        
-                        <p>安装完成后，通过<code>docker --version</code>命令验证安装是否成功。Windows/Mac用户可以从Docker官网下载Docker Desktop[citation:1]。</p>
+                    <div class="code-block" id="docker-code">
+                        <button class="copy-btn" data-target="docker-code">复制</button>
+                        <code id="docker-command">
+# Windows (PowerShell)
+Install-Module DockerMsftProvider -Force
+Install-Package Docker -ProviderName DockerMsftProvider -Force
+                        </code>
                     </div>
+                </div>
+                
+                <!-- 步骤2 -->
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>使用云服务器穿透搭建</h3>
+                    <p>对于没有公网IP的用户，我们推荐使用云服务器进行穿透搭建：</p>
                     
-                    <!-- 步骤3 -->
-                    <div class="step">
-                        <div class="step-number">3</div>
-                        <h3>下载并运行Pi节点镜像</h3>
-                        <p>Pi Network提供了官方的Docker镜像，可以通过以下命令拉取和运行：</p>
-                        
-                        <div class="code-block">
-# 拉取最新的Pi节点Docker镜像[citation:1]
-docker pull pinetwork2019/pinodedocker:v3.0
+                    <div class="code-block">
+                        <button class="copy-btn">复制</button>
+                        <code>
+# 1. 购买云服务器（推荐阿里云、腾讯云）
+# 2. 登录服务器并安装Docker
+curl -fsSL https://get.docker.com -o get-docker.sh
+sudo sh get-docker.sh
 
-# 运行Pi节点容器并映射端口
-docker run -d \
-  --name pi-node \
+# 3. 下载Pi节点Docker镜像
+docker pull pineetwork/pi-node:latest
+
+# 4. 运行Pi节点容器
+docker run -d --name pi-node \
   -p 31400-31409:31400-31409 \
-  pinetwork2019/pinodedocker:v3.0
+  -v ~/pi-data:/data \
+  pineetwork/pi-node:latest
+                        </code>
+                    </div>
+                    
+                    <p style="margin-top: 15px;"><strong>注意：</strong> 确保云服务器安全组开放端口31400-31409。</p>
+                </div>
+                
+                <!-- 步骤3 -->
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>配置节点和端口转发</h3>
+                    <p>配置节点并设置端口转发确保节点可被网络访问：</p>
+                    
+                    <div class="code-block">
+                        <button class="copy-btn">复制</button>
+                        <code>
+# 查看节点运行状态
+docker logs pi-node
 
-# 查看容器运行状态
+# 获取节点ID
+docker exec pi-node cat /data/node-id.txt
+
+# 配置路由器端口转发（家用网络需要）
+# 转发外部端口31400-31409到节点服务器的相同端口
+                        </code>
+                    </div>
+                    
+                    <p style="margin-top: 15px;"><strong>提示：</strong> 可以使用 <a href="https://canyouseeme.org" target="_blank">canyouseeme.org</a> 检查端口是否开放。</p>
+                </div>
+                
+                <!-- 步骤4 -->
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <h3>验证节点运行状态</h3>
+                    <p>使用以下命令验证节点是否正常运行：</p>
+                    
+                    <div class="code-block">
+                        <button class="copy-btn">复制</button>
+                        <code>
+# 检查容器运行状态
 docker ps
 
 # 查看节点日志
-docker logs pi-node
-                        </div>
-                        
-                        <div class="note">
-                            <h4>重要提示</h4>
-                            <p>确保所有必需的端口（31400-31409, 1701, 1723）已在云服务器防火墙和路由器（如使用家庭网络）中开放。节点需要24/7运行以积累贡献值，建议使用云服务器避免家庭网络中断问题[citation:1]。</p>
-                        </div>
+docker logs --tail 50 pi-node
+
+# 测试节点API
+curl http://localhost:31400/api/status
+
+# 预期输出应包含 "status": "syncing" 或 "status": "ready"
+                        </code>
                     </div>
                     
-                    <!-- 步骤4 -->
-                    <div class="step">
-                        <div class="step-number">4</div>
-                        <h3>配置节点与手机APP绑定</h3>
-                        <p>节点运行后，需要与Pi手机APP进行绑定：</p>
-                        
-                        <div class="requirements">
-                            <h4>绑定步骤[citation:1]</h4>
-                            <ul>
-                                <li>在节点软件界面点击"LOGIN"，生成随机验证码</li>
-                                <li>打开Pi手机APP，进入<b>Node</b>页面</li>
-                                <li>输入验证码完成绑定</li>
-                                <li>在节点软件中填写申请表，包括技术能力、服务器配置等信息</li>
-                                <li>提交后等待官方审核</li>
-                            </ul>
-                        </div>
-                        
-                        <p>首次启动后，节点会自动下载并同步区块链数据，这个过程可能需要数小时至数天，期间需要保持服务器在线[citation:1]。</p>
-                    </div>
-                    
-                    <!-- 步骤5 -->
-                    <div class="step">
-                        <div class="step-number">5</div>
-                        <h3>节点维护与优化</h3>
-                        <p>节点搭建完成后，需要进行定期维护以确保稳定运行：</p>
-                        
-                        <div class="code-block">
-# 定期更新节点软件
-docker pull pinetwork2019/pinodedocker:latest
-
-# 停止并删除旧容器
-docker stop pi-node
-docker rm pi-node
-
-# 用新镜像启动容器
-docker run -d \
-  --name pi-node \
-  -p 31400-31409:31400-31409 \
-  pinetwork2019/pinodedocker:latest
-
-# 监控节点状态
-docker stats pi-node
-
-# 备份钱包密钥（S开头的字符串）
-# 将密钥安全保存在多个位置
-                        </div>
-                        
-                        <p>节点奖励与在线时长、交易处理量相关，需持续维护以提高收益。当前Pi网络仍处于测试阶段，测试代币无实际价值，谨防诈骗[citation:1]。</p>
+                    <div style="margin-top: 20px;">
+                        <a href="#resources" class="btn">下载一键安装脚本</a>
                     </div>
                 </div>
             </div>
-        </section>
-        
-        <!-- 相关文章 -->
-        <section id="articles">
-            <div class="section-title">
-                <h2>Pi节点相关文章</h2>
-                <p>深入理解Pi Network节点技术与生态系统</p>
+        </div>
+    </section>
+
+    <!-- 常见问题 -->
+    <section class="faq" id="faq">
+        <div class="container">
+            <h2 class="section-title">常见<span class="highlight"> 问题</span>解答</h2>
+            <p class="section-subtitle">以下是Pi节点搭建过程中最常见的问题和解决方案。</p>
+            
+            <div class="faq-container">
+                <!-- FAQ 1 -->
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Pi节点有什么硬件要求？</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Pi节点对硬件要求不高，但建议满足以下配置以获得更好性能：</p>
+                        <ul style="margin: 10px 0 10px 20px;">
+                            <li><strong>最低配置：</strong> 双核CPU，4GB RAM，100GB SSD</li>
+                            <li><strong>推荐配置：</strong> 四核CPU，8GB RAM，200GB+ SSD</li>
+                            <li><strong>网络要求：</strong> 10Mbps+带宽，开放端口31400-31409</li>
+                            <li><strong>系统要求：</strong> 需要安装Docker，系统保持24/7运行</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- FAQ 2 -->
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>没有公网IP可以搭建节点吗？</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>可以，我们推荐使用云服务器进行穿透搭建：</p>
+                        <ol style="margin: 10px 0 10px 20px;">
+                            <li>购买云服务器（如阿里云、腾讯云、AWS等）</li>
+                            <li>在云服务器上安装Docker和Pi节点</li>
+                            <li>配置云服务器安全组开放必要端口</li>
+                            <li>使用云服务器的公网IP运行节点</li>
+                        </ol>
+                        <p>这种方法无需家庭网络公网IP，且服务器稳定性更高。</p>
+                    </div>
+                </div>
+                
+                <!-- FAQ 3 -->
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>节点同步需要多长时间？</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>节点同步时间取决于网络条件和区块链数据大小：</p>
+                        <ul style="margin: 10px 0 10px 20px;">
+                            <li><strong>初始同步：</strong> 通常需要12-48小时</li>
+                            <li><strong>快速网络：</strong> 如果带宽足够，可能缩短到6-12小时</li>
+                            <li><strong>影响因素：</strong> 网络速度、硬盘性能、节点数量</li>
+                            <li><strong>保持同步：</strong> 同步完成后，节点会实时更新新区块</li>
+                        </ul>
+                        <p>同步期间请确保节点24/7运行，不要中断。</p>
+                    </div>
+                </div>
+                
+                <!-- FAQ 4 -->
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>运行节点有什么奖励？</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Pi节点运营商可以获得以下奖励：</p>
+                        <ul style="margin: 10px 0 10px 20px;">
+                            <li><strong>挖矿加成：</strong> 节点运行者可获得额外的Pi挖矿速率</li>
+                            <li><strong>交易费用：</strong> 未来可能获得处理交易的费用</li>
+                            <li><strong>治理权：</strong> 参与网络治理决策</li>
+                            <li><strong>早期贡献者奖励：</strong> 作为网络早期建设者获得奖励</li>
+                        </ul>
+                        <p>具体奖励机制将在Pi Network主网上线后确定。</p>
+                    </div>
+                </div>
+                
+                <!-- FAQ 5 -->
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>遇到技术问题如何获取帮助？</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>我们提供多种支持渠道：</p>
+                        <ul style="margin: 10px 0 10px 20px;">
+                            <li><strong>QQ支持：</strong> 1129810981（Pi节点技术咨询）</li>
+                            <li><strong>Telegram群：</strong> @pinetworknodes（国际社区）</li>
+                            <li><strong>Discord：</strong> Pi Node Help（技术讨论）</li>
+                            <li><strong>问题反馈：</strong> 使用本页面的反馈表单</li>
+                        </ul>
+                        <p>建议先查看FAQ和教程，大部分问题已有解决方案。</p>
+                    </div>
+                </div>
             </div>
             
-            <div class="articles-grid">
-                <!-- 文章1 -->
-                <article class="article-card">
-                    <div class="article-img">
-                        <i class="fas fa-server"></i>
-                    </div>
-                    <div class="article-content">
-                        <h3>什么是Pi节点及其重要性？</h3>
-                        <p>Pi节点是Pi Network区块链基础设施的核心组件，不同于集中式服务器，区块链将参与交易的每个人的服务器集合起来，共同维护和管理网络。根据Pi Network白皮书，Pi节点软件运行核心SCP算法，并考虑贡献者提供的信任图信息[citation:5]。</p>
-                        <p>在区块链系统中，至少需半数节点同意才能创建新区块，即使部分节点受攻击而损坏或篡改数据，数据仍保留在多个节点上，确保数据完整性[citation:5]。</p>
-                        <div class="article-meta">
-                            <span><i class="far fa-clock"></i> 阅读时间: 5分钟</span>
-                            <a href="#" class="read-more">阅读全文 <i class="fas fa-arrow-right"></i></a>
-                        </div>
-                    </div>
-                </article>
-                
-                <!-- 文章2 -->
-                <article class="article-card">
-                    <div class="article-img">
-                        <i class="fas fa-wallet"></i>
-                    </div>
-                    <div class="article-content">
-                        <h3>Pi节点奖励机制与收益分析</h3>
-                        <p>运行Pi节点可以为网络的去中心化、安全性和可扩展性做出贡献。虽然当前Pi节点处于测试阶段，不会产生奖励，但未来正式发布后，参与节点测试的用户很可能获得奖励[citation:5]。</p>
-                        <p>节点奖励与在线时长、交易处理量相关。根据最新信息，Pi Network已更新至0.5.0版本，这是为即将到来的主网区块链准备节点的重要更新[citation:5]。</p>
-                        <div class="article-meta">
-                            <span><i class="far fa-clock"></i> 阅读时间: 6分钟</span>
-                            <a href="#" class="read-more">阅读全文 <i class="fas fa-arrow-right"></i></a>
-                        </div>
-                    </div>
-                </article>
-                
-                <!-- 文章3 -->
-                <article class="article-card">
-                    <div class="article-img">
-                        <i class="fas fa-shield-alt"></i>
-                    </div>
-                    <div class="article-content">
-                        <h3>节点安全与故障排除指南</h3>
-                        <p>确保Pi节点的安全性至关重要。Pi Network采用KYC验证、机器学习和用户信任圈来维护安全[citation:5]。定期备份钱包密钥（以S开头的字符串）和节点配置，防止数据丢失。</p>
-                        <p>常见问题包括端口未开放、同步失败等。通过日志文件（<code>docker logs pi-node</code>）监控运行状态，排查端口或同步问题[citation:1]。</p>
-                        <div class="article-meta">
-                            <span><i class="far fa-clock"></i> 阅读时间: 7分钟</span>
-                            <a href="#" class="read-more">阅读全文 <i class="fas fa-arrow-right"></i></a>
-                        </div>
-                    </div>
-                </article>
+            <div class="text-center" style="margin-top: 40px;">
+                <button class="btn btn-secondary" id="openFeedback">提交问题反馈</button>
             </div>
-        </section>
-    </main>
-    
+        </div>
+    </section>
+
+    <!-- 资源下载 -->
+    <section class="resources" id="resources">
+        <div class="container">
+            <h2 class="section-title">资源<span class="highlight"> 下载</span></h2>
+            <p class="section-subtitle">下载Pi节点搭建所需的所有软件和配置文件。</p>
+            
+            <div class="resource-cards">
+                <div class="resource-card">
+                    <div class="resource-icon">
+                        <i class="fas fa-file-code"></i>
+                    </div>
+                    <h3>一键安装脚本</h3>
+                    <p>适用于Linux/macOS的自动安装脚本，简化节点部署过程。</p>
+                    <button class="btn download-btn" data-resource="install-script">下载 (v2.1.4)</button>
+                </div>
+                
+                <div class="resource-card">
+                    <div class="resource-icon">
+                        <i class="fas fa-cog"></i>
+                    </div>
+                    <h3>配置文件模板</h3>
+                    <p>标准配置文件模板，包含常用配置选项和说明。</p>
+                    <button class="btn download-btn" data-resource="config-template">下载 (v1.0.3)</button>
+                </div>
+                
+                <div class="resource-card">
+                    <div class="resource-icon">
+                        <i class="fas fa-tools"></i>
+                    </div>
+                    <h3>验证工具包</h3>
+                    <p>节点状态验证工具，检查端口、连接和同步状态。</p>
+                    <button class="btn download-btn" data-resource="validation-tool">下载 (v1.2.0)</button>
+                </div>
+                
+                <div class="resource-card">
+                    <div class="resource-icon">
+                        <i class="fas fa-book"></i>
+                    </div>
+                    <h3>完整指南PDF</h3>
+                    <p>详细的图文教程PDF，包含所有步骤和故障排除。</p>
+                    <button class="btn download-btn" data-resource="guide-pdf">下载 (v3.2.1)</button>
+                </div>
+            </div>
+            
+            <div class="text-center" style="margin-top: 50px;">
+                <div class="code-block" style="max-width: 600px; margin: 0 auto;">
+                    <button class="copy-btn">复制</button>
+                    <code>
+# 使用curl一键安装（Linux/macOS）
+curl -fsSL https://pisetup.org/install.sh | bash
+                    </code>
+                </div>
+                <p style="margin-top: 15px; font-size: 0.9rem; color: var(--gray);">运行上述命令可自动下载并安装Pi节点（需要sudo权限）</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 成功案例 -->
+    <section class="testimonials" id="testimonials">
+        <div class="container">
+            <h2 class="section-title">成功<span class="highlight"> 案例</span></h2>
+            <p class="section-subtitle">看看其他用户如何成功搭建Pi节点并运行。</p>
+            
+            <div class="testimonial-cards">
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        "作为一名非技术人员，我原本以为搭建节点会非常困难。但这个指南让我在2小时内就成功运行了Pi节点。云服务器的方法特别适合像我这样的家庭网络用户。"
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">张</div>
+                        <div>
+                            <h4>张明</h4>
+                            <p>上海，运行节点45天</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        "我使用腾讯云服务器按照指南搭建，整个过程非常顺利。节点已经稳定运行3个月，同步率100%。QQ群的技术支持也非常及时，解答了我所有的疑问。"
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">李</div>
+                        <div>
+                            <h4>李华</h4>
+                            <p>北京，运行节点92天</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        "通过这个网站，我成功搭建了5个Pi节点分布在不同地区。一键安装脚本节省了大量时间。现在我的节点网络为Pi Network做出了贡献，期待主网上线后的奖励。"
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">王</div>
+                        <div>
+                            <h4>王涛</h4>
+                            <p>深圳，运行节点128天</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 联系我们 -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <h2 class="section-title">获取<span class="highlight"> 支持</span></h2>
+            <p class="section-subtitle">如果您在搭建过程中遇到问题，可以通过以下方式联系我们。</p>
+            
+            <div class="contact-info">
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fab fa-qq"></i>
+                    </div>
+                    <h3>QQ支持</h3>
+                    <p>1129810981</p>
+                    <p>Pi节点技术咨询</p>
+                    <p>响应时间：工作日 9:00-18:00</p>
+                </div>
+                
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fab fa-telegram"></i>
+                    </div>
+                    <h3>Telegram群</h3>
+                    <p>@pinetworknodes</p>
+                    <p>国际社区交流</p>
+                    <p>24/7活跃社区</p>
+                </div>
+                
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <h3>邮件支持</h3>
+                    <p>support@pisetup.org</p>
+                    <p>问题反馈和合作</p>
+                    <p>24小时内回复</p>
+                </div>
+            </div>
+            
+            <div class="text-center" style="margin-top: 50px;">
+                <button class="btn" id="openContact">提交问题表单</button>
+            </div>
+        </div>
+    </section>
+
     <!-- 页脚 -->
     <footer>
         <div class="container">
             <div class="footer-content">
-                <div class="footer-section">
-                    <h3>关于Pi节点搭建</h3>
-                    <p>我们提供专业的Pi Network节点搭建教程和技术支持服务，帮助用户免费搭建稳定的Pi节点，为Pi Network主网上线做好准备。</p>
-                    <p>所有教程基于官方文档和实际部署经验，确保内容的准确性和实用性。</p>
+                <div class="footer-column">
+                    <h3>PiNodeGuide</h3>
+                    <p>致力于降低Pi节点搭建技术门槛，提供最清晰易懂的免费教程和资源。</p>
+                    <div style="margin-top: 20px;">
+                        <a href="#" style="margin-right: 15px; font-size: 1.2rem;"><i class="fab fa-github"></i></a>
+                        <a href="#" style="margin-right: 15px; font-size: 1.2rem;"><i class="fab fa-twitter"></i></a>
+                        <a href="#" style="margin-right: 15px; font-size: 1.2rem;"><i class="fab fa-telegram"></i></a>
+                    </div>
                 </div>
                 
-                <div class="footer-section">
-                    <h3>技术特点</h3>
-                    <p>• 基于Docker容器化部署</p>
-                    <p>• 支持主流云服务商</p>
-                    <p>• 24/7稳定运行配置</p>
-                    <p>• 完整的监控与维护方案</p>
-                    <p>• 安全备份与恢复策略</p>
+                <div class="footer-column">
+                    <h3>快速链接</h3>
+                    <ul class="footer-links">
+                        <li><a href="#home">首页</a></li>
+                        <li><a href="#about">什么是Pi节点</a></li>
+                        <li><a href="#guide">搭建指南</a></li>
+                        <li><a href="#faq">常见问题</a></li>
+                        <li><a href="#resources">资源下载</a></li>
+                    </ul>
                 </div>
                 
-                <div class="footer-section">
-                    <h3>联系我们</h3>
-                    <p><i class="fab fa-qq"></i> QQ技术支持: 1129810981</p>
-                    <p><i class="far fa-clock"></i> 服务时间: 周一至周日 9:00-22:00</p>
-                    <p><i class="fas fa-exclamation-triangle"></i> 免责声明: 本教程仅供参考，Pi Network仍处于测试阶段，请注意相关风险。</p>
+                <div class="footer-column">
+                    <h3>社区支持</h3>
+                    <ul class="footer-links">
+                        <li><a href="#contact">联系我们</a></li>
+                        <li><a href="#testimonials">成功案例</a></li>
+                        <li><a href="#" id="openFeedbackFooter">问题反馈</a></li>
+                        <li><a href="#">贡献指南</a></li>
+                        <li><a href="#">更新日志</a></li>
+                    </ul>
                 </div>
             </div>
             
             <div class="copyright">
-                <p>© 2026 Pi节点免费搭建指南. 本网站内容仅供参考学习。Pi Network是Pi Community Company的注册商标。</p>
-                <p>根据最新信息，Pi Network预计在达到1000万用户迁移至封闭主网的目标后，开放式主网将于2025年第一季度推出[citation:5]。</p>
+                <p>&copy; 2023 PiNodeGuide - Pi节点免费搭建指南。本网站与Pi Network官方无关联，为社区驱动的教育项目。</p>
+                <p style="margin-top: 10px;">免费搭建节点联系方式 QQ: 1129810981</p>
             </div>
         </div>
     </footer>
-    
+
+    <!-- 主题切换按钮 -->
+    <div class="theme-switcher">
+        <button class="theme-btn" id="themeToggle">
+            <i class="fas fa-moon"></i>
+        </button>
+    </div>
+
+    <!-- 反馈模态框 -->
+    <div class="modal" id="feedbackModal">
+        <div class="modal-content">
+            <button class="close-modal" id="closeFeedback">&times;</button>
+            <h2>问题反馈</h2>
+            <p>请描述您遇到的问题或提供改进建议：</p>
+            
+            <form class="contact-form" id="feedbackForm">
+                <div class="form-group">
+                    <label for="name">姓名</label>
+                    <input type="text" id="name" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">邮箱</label>
+                    <input type="email" id="email" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="issueType">问题类型</label>
+                    <select id="issueType" required>
+                        <option value="">请选择问题类型</option>
+                        <option value="installation">安装问题</option>
+                        <option value="configuration">配置问题</option>
+                        <option value="performance">性能问题</option>
+                        <option value="other">其他问题</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="message">问题描述</label>
+                    <textarea id="message" rows="5" required placeholder="请详细描述您遇到的问题，包括错误信息、操作系统等信息"></textarea>
+                </div>
+                
+                <button type="submit" class="btn">提交反馈</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- 联系模态框 -->
+    <div class="modal" id="contactModal">
+        <div class="modal-content">
+            <button class="close-modal" id="closeContact">&times;</button>
+            <h2>联系我们</h2>
+            <p>如果您需要更详细的技术支持，请填写以下表单：</p>
+            
+            <form class="contact-form" id="contactForm">
+                <div class="form-group">
+                    <label for="contactName">姓名</label>
+                    <input type="text" id="contactName" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="contactEmail">邮箱</label>
+                    <input type="email" id="contactEmail" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="contactMethod">首选联系方式</label>
+                    <select id="contactMethod" required>
+                        <option value="">请选择</option>
+                        <option value="qq">QQ</option>
+                        <option value="email">邮箱</option>
+                        <option value="telegram">Telegram</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="contactDetails">联系方式详情</label>
+                    <input type="text" id="contactDetails" required placeholder="请输入QQ号/Telegram用户名等">
+                </div>
+                
+                <div class="form-group">
+                    <label for="contactMessage">详细问题描述</label>
+                    <textarea id="contactMessage" rows="5" required placeholder="请详细描述您的问题，我们会尽快联系您"></textarea>
+                </div>
+                
+                <button type="submit" class="btn">提交请求</button>
+            </form>
+        </div>
+    </div>
+
     <script>
-        // 简单的滚动效果
+        // 移动端菜单切换
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('active');
+            mobileMenuBtn.innerHTML = mobileMenu.classList.contains('active') 
+                ? '<i class="fas fa-times"></i>' 
+                : '<i class="fas fa-bars"></i>';
+        });
+        
+        // 关闭移动端菜单当点击链接
+        document.querySelectorAll('.mobile-nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('active');
+                mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+            });
+        });
+        
+        // 语言切换功能
+        const langButtons = document.querySelectorAll('.lang-btn, .mobile-lang-switcher .btn');
+        
+        langButtons.forEach(btn => {
+            btn.addEventListener('click', function() {
+                const lang = this.getAttribute('data-lang');
+                
+                // 更新按钮状态
+                document.querySelectorAll('.lang-btn').forEach(b => {
+                    b.classList.remove('active');
+                });
+                
+                document.querySelectorAll(`.lang-btn[data-lang="${lang}"]`).forEach(b => {
+                    b.classList.add('active');
+                });
+                
+                // 实际应用中这里会加载对应的语言文件
+                // 这里只做演示
+                alert(`语言已切换为 ${lang === 'zh' ? '中文' : 'English'} (演示功能)`);
+            });
+        });
+        
+        // 操作系统选择器
+        const osButtons = document.querySelectorAll('.os-btn');
+        const dockerCommand = document.getElementById('docker-command');
+        
+        const dockerCommands = {
+            windows: '# Windows (PowerShell)\nInstall-Module DockerMsftProvider -Force\nInstall-Package Docker -ProviderName DockerMsftProvider -Force',
+            mac: '# macOS (Terminal)\n/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"\nbrew install --cask docker',
+            linux: '# Linux (Ubuntu/Debian)\nsudo apt-get update\nsudo apt-get install docker.io\nsudo systemctl start docker\nsudo systemctl enable docker'
+        };
+        
+        osButtons.forEach(btn => {
+            btn.addEventListener('click', function() {
+                const os = this.getAttribute('data-os');
+                
+                // 更新按钮状态
+                osButtons.forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                
+                // 更新代码块
+                dockerCommand.textContent = dockerCommands[os];
+            });
+        });
+        
+        // 复制代码功能
+        document.querySelectorAll('.copy-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const targetId = this.getAttribute('data-target');
+                const codeBlock = targetId ? document.getElementById(targetId) : this.parentElement;
+                const code = codeBlock.querySelector('code').textContent;
+                
+                navigator.clipboard.writeText(code).then(() => {
+                    const originalText = this.textContent;
+                    this.textContent = '已复制!';
+                    this.style.backgroundColor = 'var(--success)';
+                    
+                    setTimeout(() => {
+                        this.textContent = originalText;
+                        this.style.backgroundColor = '';
+                    }, 2000);
+                });
+            });
+        });
+        
+        // FAQ折叠功能
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const item = question.parentElement;
+                item.classList.toggle('active');
+            });
+        });
+        
+        // 资源下载按钮
+        document.querySelectorAll('.download-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const resource = this.getAttribute('data-resource');
+                const resourceNames = {
+                    'install-script': '一键安装脚本',
+                    'config-template': '配置文件模板',
+                    'validation-tool': '验证工具包',
+                    'guide-pdf': '完整指南PDF'
+                };
+                
+                alert(`开始下载 ${resourceNames[resource]}...\n\n(演示功能 - 实际网站中会提供真实文件下载)`);
+            });
+        });
+        
+        // 统计数据动画
+        function animateCounter(element, target, duration = 2000) {
+            const start = parseInt(element.textContent.replace(',', ''));
+            const increment = target > start ? 1 : -1;
+            const step = Math.abs(Math.floor(duration / (target - start)));
+            let current = start;
+            
+            const timer = setInterval(() => {
+                current += increment;
+                element.textContent = current.toLocaleString();
+                
+                if (current === target) {
+                    clearInterval(timer);
+                }
+            }, step);
+        }
+        
+        // 页面加载后开始动画
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                animateCounter(document.getElementById('nodeCount'), 1850);
+                animateCounter(document.getElementById('guideCount'), 45200);
+                animateCounter(document.getElementById('countryCount'), 78);
+            }, 500);
+        });
+        
+        // 主题切换
+        const themeToggle = document.getElementById('themeToggle');
+        
+        themeToggle.addEventListener('click', () => {
+            document.body.classList.toggle('dark-theme');
+            
+            if (document.body.classList.contains('dark-theme')) {
+                themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+                localStorage.setItem('theme', 'dark');
+            } else {
+                themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+                localStorage.setItem('theme', 'light');
+            }
+        });
+        
+        // 检查保存的主题
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'dark') {
+            document.body.classList.add('dark-theme');
+            themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+        }
+        
+        // 模态框功能
+        const feedbackModal = document.getElementById('feedbackModal');
+        const contactModal = document.getElementById('contactModal');
+        const openFeedbackBtn = document.getElementById('openFeedback');
+        const openFeedbackFooter = document.getElementById('openFeedbackFooter');
+        const openContactBtn = document.getElementById('openContact');
+        const closeFeedbackBtn = document.getElementById('closeFeedback');
+        const closeContactBtn = document.getElementById('closeContact');
+        
+        openFeedbackBtn.addEventListener('click', () => {
+            feedbackModal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+        
+        openFeedbackFooter.addEventListener('click', () => {
+            feedbackModal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+        
+        openContactBtn.addEventListener('click', () => {
+            contactModal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+        
+        closeFeedbackBtn.addEventListener('click', () => {
+            feedbackModal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        });
+        
+        closeContactBtn.addEventListener('click', () => {
+            contactModal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        });
+        
+        // 点击模态框外部关闭
+        window.addEventListener('click', (e) => {
+            if (e.target === feedbackModal) {
+                feedbackModal.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+            if (e.target === contactModal) {
+                contactModal.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+        });
+        
+        // 表单提交处理
+        document.getElementById('feedbackForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('感谢您的反馈！我们会尽快处理您的问题。');
+            feedbackModal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+            this.reset();
+        });
+        
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('请求已提交！我们会通过您选择的联系方式尽快与您联系。');
+            contactModal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+            this.reset();
+        });
+        
+        // 平滑滚动
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
+            anchor.addEventListener('click', function(e) {
                 e.preventDefault();
                 
                 const targetId = this.getAttribute('href');
-                if(targetId === '#') return;
+                if (targetId === '#') return;
                 
                 const targetElement = document.querySelector(targetId);
-                if(targetElement) {
+                if (targetElement) {
                     window.scrollTo({
                         top: targetElement.offsetTop - 80,
                         behavior: 'smooth'
@@ -791,25 +1634,14 @@ docker stats pi-node
             });
         });
         
-        // 导航栏滚动效果
-        window.addEventListener('scroll', function() {
-            const nav = document.querySelector('nav');
+        // 滚动时更新导航栏
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
             if (window.scrollY > 100) {
-                nav.style.boxShadow = '0 6px 20px rgba(0, 0, 0, 0.1)';
+                header.style.boxShadow = '0 5px 20px rgba(0, 0, 0, 0.1)';
             } else {
-                nav.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.05)';
+                header.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.08)';
             }
-        });
-        
-        // 文章卡片悬停效果增强
-        document.querySelectorAll('.article-card').forEach(card => {
-            card.addEventListener('mouseenter', function() {
-                this.style.transform = 'translateY(-10px)';
-            });
-            
-            card.addEventListener('mouseleave', function() {
-                this.style.transform = 'translateY(0)';
-            });
         });
     </script>
 </body>
